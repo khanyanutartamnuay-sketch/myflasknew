@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}ข้อความที่แชร์{% endblock %}
+
+{% block content %}
+<div style="padding:20px; max-width:700px; margin:auto;">
+  <h2 style="text-align:center; color:#ff66aa; margin-bottom:30px;">ข้อความจากผู้ใช้</h2>
+
+  <!-- แสดงข้อความทั้งหมด -->
+  {% for msg in messages %}
+    <div style="background:#fff0f5; padding:10px; border-radius:10px; margin-bottom:10px; 
+                box-shadow:0 2px 5px rgba(0,0,0,0.1); position:relative;">
+      {{ msg }}
+      <a href="{{ url_for('message', index=loop.index0) }}" 
+         style="position:absolute; top:5px; right:10px; color:red; font-weight:bold;">ลบ</a>
+    </div>
+  {% else %}
+    <p style="text-align:center; color:#999;">ยังไม่มีข้อความ</p>
+  {% endfor %}
+
+  <!-- ปุ่มกลับหน้าแรกและส่งข้อความใหม่ -->
+  <div style="text-align:center; margin-top:20px;">
+    <button onclick="location.href='/felt'" 
+            style="padding:10px 20px; border-radius:10px; background:#ff99cc; color:white; border:none; cursor:pointer; margin-right:10px;">
+      ส่งข้อความใหม่
+    </button>
+    <button onclick="location.href='/'" 
+            style="padding:10px 20px; border-radius:10px; background:#ff99cc; color:white; border:none; cursor:pointer;">
+      กลับหน้าแรก
+    </button>
+  </div>
+</div>
+{% endblock %}

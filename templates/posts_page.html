@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div style="padding:20px; max-width:700px; margin:auto;">
+    <h2 style="text-align:center; color:#ff66aa; margin-bottom:30px;">ข้อความทั้งหมด</h2>
+
+    {% for post in posts %}
+      <div style="background:#fff0f5; padding:10px; border-radius:10px; margin-bottom:20px; 
+                  box-shadow:0 2px 5px rgba(0,0,0,0.1);">
+        
+        <!-- ข้อความ -->
+        <p style="margin:0; font-weight:bold;">{{ post.text }}</p>
+
+        <!-- ปุ่มไลค์ -->
+        <a href="{{ url_for('like', post_id=post.id) }}" 
+           style="color:#ff3399; text-decoration:none; font-size:14px;">
+          ❤️ ไลค์ ({{ post.likes }})
+        </a>
+
+        <!-- ฟอร์มคอมเมนต์ -->
+        <form method="POST" action="{{ url_for('comment', post_id=post.id) }}" style="margin-top:10px;">
+          <input type="text" name="comment" placeholder="เขียนความคิดเห็น..." 
+                 style="padding:5px; width:70%; border-radius:5px; border:1px solid #ccc;">
+          <button type="submit" style="padding:5px 10px; background:#ff99cc; border:none; border-radius:5px; color:white;">
+            ส่ง
+          </button>
+        </form>
+
+        <!-- แสดงคอมเมนต์ -->
+        {% if post.comments %}
+          <div style="margin-top:10px; padding-left:10px; border-left:3px solid #ff99cc;">
+            {% for c in post.comments %}
+              <p style="margin:3px 0; font-size:14px; color:#555;">💬 {{ c }}</p>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+      </div>
+    {% else %}
+      <p style="text-align:center; color:#999;">ยังไม่มีข้อความ</p>
+    {% endfor %}
+
+    <div style="text-align:center; margin-top:20px;">
+      <a href="{{ url_for('felt') }}" 
+         style="padding:10px 20px; border-radius:10px; background:#ff99cc; color:white; text-decoration:none;">
+        พิมพ์ข้อความใหม่
+      </a>
+    </div>
+  </div>
+{% endblock %}
+

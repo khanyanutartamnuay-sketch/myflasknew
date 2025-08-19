@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% block title %}หน้าแรก{% endblock %}
+
+{% block content %}
+<div style="
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    background-image: url('/static/leather_bg.png'); /* พื้นหลังหนัง */
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat-x; /* ทำซ้ำแนวนอน */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+">
+
+  <!-- Overlay โปร่ง -->
+  <div style="
+      position:absolute;
+      top:0; left:0; right:0; bottom:0;
+      background-color: rgba(255,255,255,0.6); /* โปร่งเพื่ออ่านง่าย */
+      z-index:1;
+  "></div>
+
+  <!-- เนื้อหาอยู่บน overlay -->
+  <div style="
+      position: relative;
+      z-index:2;
+      max-width:700px;
+      width: 100%;
+      display:flex;
+      flex-direction:column;
+      gap:30px;
+  ">
+
+    <!-- ข้อความต้อนรับ -->
+    <h3 style="font-family: 'Comic Neue', cursive; font-size:42px; font-weight:bold; 
+               color:#ff3399; text-align:center; margin-bottom:20px;">
+      ยินดีต้อนรับสู่เว็บของเรา
+    </h3>
+
+    <!-- การ์ดเพลงแนะนำ -->
+    <div style="
+        background:#ffe6f2;
+        padding:30px;
+        border-radius:20px;
+        box-shadow:0 6px 15px rgba(0,0,0,0.15);
+        cursor:pointer;
+        transition: transform 0.2s;
+    "
+         onclick="location.href='/song'"
+         onmouseover="this.style.transform='scale(1.03)';"
+         onmouseout="this.style.transform='scale(1)';">
+      <h2 style="color:#ff3399; margin-bottom:12px;">🎶 เพลงแนะนำ</h2>
+      <p style="margin:0; font-size:16px;">คลิกหากคุณต้องการฟังเพลงเพื่อฮึดใจ</p>
+    </div>
+
+    <!-- การ์ดช่องใส่ความรู้สึก -->
+    <div style="
+        background:#fff0f5;
+        padding:30px;
+        border-radius:20px;
+        box-shadow:0 6px 15px rgba(0,0,0,0.15);
+        cursor:pointer;
+        transition: transform 0.2s;
+    "
+         onclick="location.href='/felt'"
+         onmouseover="this.style.transform='scale(1.03)';"
+         onmouseout="this.style.transform='scale(1)';">
+      <h2 style="color:#ff66aa; margin-bottom:12px;">💭 ช่องใส่ความรู้สึก</h2>
+      <p style="margin:0; font-size:16px;">ต้องการระบายหรืออยากแบ่งปันความรู้สึกดีๆไหม</p>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
+
+
+
+
+
+

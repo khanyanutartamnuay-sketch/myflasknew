@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block title %}โพสต์ใหม่{% endblock %}
+
+{% block content %}
+<div style="max-width:500px; margin:auto; padding:20px;">
+
+  <h1 style="text-align:center; font-size:28px; color:#ff3399; margin-bottom:20px;">สร้างโพสต์ใหม่ 💌</h1>
+
+  <form action="{{ url_for('new_post') }}" method="post" style="display:flex; flex-direction:column;">
+      <textarea name="text" placeholder="พิมพ์ข้อความของคุณ..." rows="4" style="padding:10px; border-radius:10px; border:1px solid #ccc; margin-bottom:10px;"></textarea>
+      <button type="submit" style="padding:10px; border:none; border-radius:20px; background:#ff66aa; color:white;">โพสต์</button>
+  </form>
+
+  <div style="text-align:center; margin-top:15px;">
+      <a href="{{ url_for('all_posts') }}" style="color:#1877f2;">กลับไปหน้าทุกโพสต์</a>
+  </div>
+
+</div>
+{% endblock %}

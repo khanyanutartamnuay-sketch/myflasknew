@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div style="display:flex; justify-content:center; margin-top:50px;">
+    <div style="width:600px; background:#fff0f5; padding:30px; border-radius:15px; 
+                box-shadow:0 4px 10px rgba(0,0,0,0.15);">
+
+      <h2 style="text-align:center; color:#ff3399; margin-bottom:20px;">
+         ต้องการแบ่งปันเรื่องราวของคุณไหม?
+      </h2>
+
+      <form method="POST" style="display:flex; flex-direction:column; gap:15px;">
+        <textarea name="message" rows="5" placeholder="เขียนความรู้สึกหรือข้อความของคุณ..."
+                  style="resize:none; padding:15px; font-size:16px; border-radius:10px; border:1px solid #ccc; 
+                         outline:none; width:100%; box-sizing:border-box;"></textarea>
+
+        <button type="submit" 
+                style="padding:12px; font-size:16px; font-weight:bold; 
+                       background:#ff66aa; border:none; border-radius:10px; 
+                       color:white; cursor:pointer; transition:0.3s;">
+         ส่ง
+        </button>
+      </form>
+
+      <div style="text-align:center; margin-top:20px;">
+        <a href="{{ url_for('posts_page') }}" 
+           style="color:#ff3399; text-decoration:none; font-size:14px;">
+          ⬅️ กลับไปหน้าข้อความทั้งหมด
+        </a>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+
+
+

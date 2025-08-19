@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}โพสต์ทั้งหมด{% endblock %}
+
+{% block content %}
+<div style="max-width:700px; margin:auto; padding:20px;">
+
+  <h1 style="text-align:center; font-size:32px; color:#ff3399; margin-bottom:30px;">โพสต์ทั้งหมดของคุณ 💖</h1>
+
+  <!-- Loop แสดงโพสต์ -->
+  {% for post in posts %}
+  <div style="background:#fff; border:1px solid #ddd; border-radius:10px; padding:15px; margin-bottom:20px; box-shadow:0 2px 5px rgba(0,0,0,0.1);">
+      <p>{{ post.text }}</p>
+
+      <div style="margin-top:10px;">
+          <a href="{{ url_for('like', post_id=post.id) }}" style="text-decoration:none; color:#1877f2;">❤️ {{ post.likes }} Like</a>
+      </div>
+
+      <div style="margin-top:15px; border-top:1px solid #eee; padding-top:10px;">
+          {% for c in post.comments %}
+          <div style="margin-bottom:5px;"><strong>{{ c.user }}:</strong> {{ c.text }}</div>
+          {% endfor %}
+
+          <form action="{{ url_for('comment') }}" method="post" style="display:flex; margin-top:10px;">
+              <input type="hidden" name="post_id" value="{{ post.id }}">
+              <input type="text" name="comment" placeholder="เขียนความคิดเห็น..." style="flex:1; padding:8px; border-radius:20px; border:1px solid #ccc; margin-right:5px;">
+              <button type="submit" style="padding:8px 15px; border-radius:20px; border:none; background:#1877f2; color:white;">ส่ง</button>
+          </form>
+      </div>
+  </div>
+  {% endfor %}
+
+  <div style="text-align:center; margin-top:20px;">
+      <a href="{{ url_for('new_post') }}" style="text-decoration:none; color:white; background:#ff66aa; padding:10px 20px; border-radius:20px;">สร้างโพสต์ใหม่</a>
+  </div>
+
+</div>
+{% endblock %}
+
+
+
